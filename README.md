@@ -160,11 +160,11 @@ Program menyediakan tujuh pilihan menu. Pengguna dapat memilih fitur yang ingin 
 
 ### 3. Menjalankan fitur program
 
-**Menu 1 — Menampilkan dan Mencari Langganan**
+**Menu 1 - Menampilkan dan Mencari Langganan**
 
 Pengguna dapat memilih untuk menampilkan seluruh langganan dalam bentuk tabel atau kartu detail. Selain itu, tersedia fitur pencarian berdasarkan kata kunci dan filter berdasarkan kategori maupun status langganan.
 
-**Menu 2 — Menambahkan Langganan Baru**
+**Menu 2 - Menambahkan Langganan Baru**
 
 Pengguna mengikuti lima langkah pengisian data, mulai dari memilih kategori langganan, memilih atau menambahkan layanan, memilih atau menambahkan metode pembayaran, mengisi harga dan tanggal tagihan, hingga mengisi informasi khusus sesuai kategori.
 
@@ -172,27 +172,27 @@ Sebelum disimpan, program menampilkan ringkasan data yang sudah diisi agar pengg
 
 ID langganan, layanan, dan metode pembayaran dibuat otomatis oleh program.
 
-**Menu 3 — Mengedit Data Langganan**
+**Menu 3 - Mengedit Data Langganan**
 
 Program menampilkan daftar langganan terlebih dahulu. Pengguna dapat memilih data berdasarkan nomor urut atau ID, lalu mengubah informasi yang diperlukan dalam satu sesi pengeditan.
 
 Setelah perubahan selesai, data diperbarui di database melalui `langgananDAO.update(...)`.
 
-**Menu 4 — Menghapus Langganan**
+**Menu 4 - Menghapus Langganan**
 
 Pengguna memilih langganan yang ingin dihapus dari daftar. Program kemudian menampilkan detail data tersebut dan meminta konfirmasi sebelum menghapusnya.
 
 Jika pengguna menyetujui penghapusan, program menjalankan `langgananDAO.delete(...)`. Data yang dihapus tidak lagi tersimpan di database.
 
-**Menu 5 — Ringkasan Pengeluaran**
+**Menu 5 - Ringkasan Pengeluaran**
 
 Program menghitung total biaya bulanan dari seluruh langganan yang berstatus aktif. Hasilnya dibagi menjadi pengeluaran untuk layanan streaming dan layanan produktivitas, sehingga pengguna dapat melihat kategori yang paling banyak menghabiskan biaya.
 
-**Menu 6 — Simulasi Biaya**
+**Menu 6 - Simulasi Biaya**
 
 Pengguna dapat menghitung perkiraan biaya langganan untuk beberapa bulan, dengan pilihan diskon tambahan. Program juga menghitung perkiraan biaya selama satu tahun menggunakan method yang berbeda sesuai jenis langganan.
 
-**Menu 7 — Keluar**
+**Menu 7 - Keluar**
 
 Program menghentikan menu utama dan membersihkan resource yang berkaitan dengan koneksi database. Untuk koneksi JDBC yang digunakan oleh aplikasi, resource ditutup sesuai kebutuhan. Program kemudian berakhir.
 
@@ -295,20 +295,13 @@ Contohnya, `LanggananStreaming` memberikan diskon tahunan sebesar 5%, sedangkan 
 
 Perhitungannya adalah sebagai berikut:
 
-- Streaming:
+- **Streaming (diskon 5%):**
 
-  \[
-  \text{Biaya Tahunan}
-  = \text{Harga Bulanan} \times 12 \times 0{,}95
-  \]
+  `Biaya Tahunan = Harga Bulanan × 12 × 0.95`
 
-- Produktivitas:
+- **Produktivitas (diskon 10%):**
 
-  \[
-  \text{Biaya Tahunan}
-  = \text{Harga Bulanan} \times 12 \times 0{,}90
-  \]
-
+  `Biaya Tahunan = Harga Bulanan × 12 × 0.90`
 Selain `hitungBiayaTahunan()`, overriding juga digunakan pada method `getTipeLangganan()`, `tampilkanDetail()`, dan `hitungEstimasiBiaya(int bulan)` sesuai implementasi kelas masing-masing.
 
 Contoh pemanggilannya pada Controller:
