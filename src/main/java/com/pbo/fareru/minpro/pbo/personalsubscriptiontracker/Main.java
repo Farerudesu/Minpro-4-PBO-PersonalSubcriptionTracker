@@ -9,8 +9,14 @@ import com.pbo.fareru.minpro.pbo.view.LanggananView;
  */
 public class Main {
     public static void main(String[] args) {
-        LanggananView view = new LanggananView();
-        LanggananController controller = new LanggananController(view);
-        controller.jalankanAplikasi();
+        try {
+            LanggananView view = new LanggananView();
+            LanggananController controller = new LanggananController(view);
+            controller.jalankanAplikasi();
+        } finally {
+            try {
+                com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkedShutdown();
+            } catch (Exception ignored) { }
+        }
     }
 }

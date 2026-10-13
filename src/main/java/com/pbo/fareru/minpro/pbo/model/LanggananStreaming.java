@@ -52,8 +52,16 @@ public class LanggananStreaming extends Langganan implements DapatDidiskon {
     @Override
     public void tampilkanDetail() {
         super.tampilkanDetail();
-        System.out.println("Resolusi     : " + kualitasResolusi);
-        System.out.println("Batas Layar  : " + batasLayar + " Perangkat / Layar");
+        boolean isAudio = getLayanan() != null && getLayanan().getKategori() != null
+                && (getLayanan().getKategori().toLowerCase().contains("musik")
+                    || getLayanan().getKategori().toLowerCase().contains("audio"));
+        if (isAudio) {
+            System.out.println("Kualitas Audio: " + kualitasResolusi);
+            System.out.println("Batas Device  : " + batasLayar + " Perangkat");
+        } else {
+            System.out.println("Resolusi Video: " + kualitasResolusi);
+            System.out.println("Batas Layar   : " + batasLayar + " Perangkat / Layar");
+        }
     }
 
     @Override

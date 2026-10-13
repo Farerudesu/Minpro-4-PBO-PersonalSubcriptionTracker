@@ -53,8 +53,15 @@ public class LanggananProduktivitas extends Langganan implements DapatDidiskon {
     @Override
     public void tampilkanDetail() {
         super.tampilkanDetail();
-        System.out.println("Storage      : " + kapasitasStorage);
-        System.out.println("Lisensi User : " + lisensiUser + " Akun Pengguna");
+        String str = kapasitasStorage != null ? kapasitasStorage.toLowerCase() : "";
+        boolean isStorage = str.contains("tb") || str.contains("gb") || str.contains("mb")
+                || str.contains("storage") || str.contains("drive") || str.contains("cloud storage");
+        if (isStorage) {
+            System.out.println("Storage       : " + kapasitasStorage);
+        } else {
+            System.out.println("Fitur / Spek  : " + kapasitasStorage);
+        }
+        System.out.println("Lisensi/Akses : " + lisensiUser + " Akun Pengguna");
     }
 
     @Override

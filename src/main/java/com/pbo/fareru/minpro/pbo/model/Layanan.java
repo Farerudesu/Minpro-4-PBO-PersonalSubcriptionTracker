@@ -1,13 +1,27 @@
 package com.pbo.fareru.minpro.pbo.model;
 
-/**
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "layanan")
+/**
  * @author Muhammad Fahriel (2509116050)
  */
 public class Layanan {
+    @Id
+    @Column(name = "id_layanan")
     private String idLayanan;
+
+    @Column(name = "nama_layanan")
     private String namaLayanan;
+
+    @Column(name = "kategori")
     private String kategori;
+
+    protected Layanan() { }
 
     public Layanan(String idLayanan, String namaLayanan, String kategori) {
         setIdLayanan(idLayanan);

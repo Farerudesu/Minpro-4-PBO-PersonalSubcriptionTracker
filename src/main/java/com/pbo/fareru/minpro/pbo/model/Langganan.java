@@ -1,11 +1,17 @@
 package com.pbo.fareru.minpro.pbo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+
 /**
 
  * @author Muhammad Fahriel (2509116050)
  */
 public abstract class Langganan {
     protected static final int BATAS_BULAN_DISKON = 12;
+    @Id
     private String idSubscription;
     private Layanan layanan;
     private double hargaBulanan;

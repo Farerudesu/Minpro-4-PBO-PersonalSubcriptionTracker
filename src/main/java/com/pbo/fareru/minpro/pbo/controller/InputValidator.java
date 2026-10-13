@@ -2,10 +2,6 @@ package com.pbo.fareru.minpro.pbo.controller;
 
 import java.util.Scanner;
 
-/**
-
- * @author Muhammad Fahriel (2509116050)
- */
 public class InputValidator {
 
     public static String bacaString(Scanner scanner, String prompt) {
@@ -82,6 +78,53 @@ public class InputValidator {
                 return false;
             }
             System.out.println("[Error] Ketik 'y' untuk ya atau 'n' untuk tidak!");
+        }
+    }
+
+    public static String bacaStringOpsi(Scanner scanner, String prompt, String defaultVal) {
+        System.out.print(prompt);
+        String input = scanner.nextLine();
+        if (input == null || input.trim().isEmpty()) {
+            return defaultVal;
+        }
+        return input.trim();
+    }
+
+    public static int bacaIntOpsi(Scanner scanner, String prompt, int min, int max, int defaultVal) {
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+            if (input == null || input.trim().isEmpty()) {
+                return defaultVal;
+            }
+            try {
+                int nilai = Integer.parseInt(input.trim());
+                if (nilai >= min && nilai <= max) {
+                    return nilai;
+                }
+                System.out.printf("[Error] Nilai harus berada dalam rentang %d sampai %d!%n", min, max);
+            } catch (NumberFormatException e) {
+                System.out.println("[Error] Input harus berupa angka bulat!");
+            }
+        }
+    }
+
+    public static double bacaDoubleOpsi(Scanner scanner, String prompt, double min, double defaultVal) {
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+            if (input == null || input.trim().isEmpty()) {
+                return defaultVal;
+            }
+            try {
+                double nilai = Double.parseDouble(input.trim());
+                if (nilai >= min) {
+                    return nilai;
+                }
+                System.out.printf("[Error] Nilai minimal adalah %,.2f!%n", min);
+            } catch (NumberFormatException e) {
+                System.out.println("[Error] Input harus berupa bilangan angka!");
+            }
         }
     }
 
